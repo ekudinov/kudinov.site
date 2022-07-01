@@ -1,0 +1,1 @@
+while true; do killall server; make run --silent; sleep 10; done
