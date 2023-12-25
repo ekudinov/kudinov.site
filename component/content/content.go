@@ -16,8 +16,8 @@ var messages = map[string]map[bool]string{
 		false: "To know all of them, even a few human lives are not enough.",
 	},
 	"str3": {
-		true:  "Для того чтобы не утонуть в этом океане возможностей, я решил сконцентрироваться на:",
-		false: "In order not to drown in this ocean of opportunity, I decided to concentrate on:",
+		true:  "Для того чтобы не утонуть в этом океане возможностей, я решил сконцентрироваться на Golang стэке",
+		false: "In order not to drown in this ocean of opportunity, I decided to concentrate on Golang stack",
 	},
 	"stack": {
 		true:  "Текущий используемый стек:",
@@ -26,6 +26,10 @@ var messages = map[string]map[bool]string{
 	"desire": {
 		true:  "Желание использовать:",
 		false: "Desire to try:",
+	},
+	"hobby": {
+		true:  "Делаю в свободное время для души:",
+		false: "I do it in my free time for the soul:",
 	},
 }
 
@@ -37,6 +41,7 @@ func (c *Main) Render() app.UI {
 	stack := &stack{}
 	desire := &desire{}
 	description := &description{}
+	hobby := &hobby{}
 	return app.Div().Body(
 		&image{},
 		app.Div().Styles(map[string]string{
@@ -53,10 +58,12 @@ func (c *Main) Render() app.UI {
 					desire:      desire,
 					stack:       stack,
 					description: description,
+					hobby:       hobby,
 				}),
 		),
 		stack,
 		desire,
+		hobby,
 	)
 }
 
@@ -93,11 +100,6 @@ func (d *description) Render() app.UI {
 			"padding-bottom": "5px",
 		}).Body(app.If(isRu,
 			app.Text(messages["str3"][isRu])).Else(app.Text(messages["str3"][isRu]))),
-		app.Div().Styles(map[string]string{
-			"padding":    "10px 5px",
-			"font-size":  "16px",
-			"font-style": "italic",
-		}).Text("Golang && PHP(Symfony5+)"),
 	)
 }
 
@@ -106,6 +108,7 @@ type button struct {
 	desire      *desire
 	stack       *stack
 	description *description
+	hobby       *hobby
 }
 
 func (b *button) Render() app.UI {
@@ -123,6 +126,7 @@ func (b *button) onClick(ctx app.Context, e app.Event) {
 	b.desire.Update()
 	b.stack.Update()
 	b.description.Update()
+	b.hobby.Update()
 
 }
 
@@ -132,17 +136,17 @@ type stack struct {
 
 func (s *stack) Render() app.UI {
 	return app.Div().Styles(map[string]string{
-		"padding":   "10px",
+		"padding":   "5px 10px 0px",
 		"font-size": "14px",
 	}).Body(
 		app.Div().Styles(map[string]string{
-			"margin":      "10px 5px",
+			"margin":      "0px 5px 10px 5px",
 			"font-weight": "bold",
 		}).Body(app.If(isRu,
 			app.Text(messages["stack"][isRu])).Else(app.Text(messages["stack"][isRu]))),
 		app.Div().Styles(map[string]string{
 			"font-style": "italic",
-		}).Text("PHP7/8, Go, Mysql, Postgresql, Rabbitmq, Redis, Varnish, Nginx, Docker, Docker-compose, WebRTC, Asterisk(FreePBX), Codeception, Gitlab CI\\CD"),
+		}).Text("Go, Mysql, Postgresql, Cockrouch, Rabbitmq, Redis, Nginx, Docker, Docker-compose, Gitlab"),
 	)
 }
 
@@ -152,7 +156,7 @@ type desire struct {
 
 func (d *desire) Render() app.UI {
 	return app.Div().Styles(map[string]string{
-		"padding":   "10px",
+		"padding":   "5px 10px 0px",
 		"font-size": "14px",
 	}).Body(
 		app.Div().Styles(map[string]string{
@@ -160,6 +164,25 @@ func (d *desire) Render() app.UI {
 			"font-weight": "bold",
 		}).Body(app.If(isRu,
 			app.Text(messages["desire"][isRu])).Else(app.Text(messages["desire"][isRu]))),
-		app.Div().Text("microservices, grpc, audio/video streams, ethereum smart contracts(solidity), dapp && distributed applications, SPA&PWA(golang->wasm), highload projects, kubernetes"),
+		app.Div().Text("Microservices, grpc, data processing, spa&pwa(golang->wasm), highload projects"),
 	)
+}
+
+type hobby struct {
+	app.Compo
+}
+
+func (f *hobby) Render() app.UI {
+	return app.Div().Styles(map[string]string{
+		"padding":   "5px 10px",
+		"font-size": "14px",
+	}).Body(
+		app.Div().Styles(map[string]string{
+			"margin":      "10px 5px",
+			"font-weight": "bold",
+		}).Body(app.If(isRu,
+			app.Text(messages["hobby"][isRu])).Else(app.Text(messages["hobby"][isRu]))),
+		app.Div().Text("App framework for Ubuntu Touch && Tiling window manager like dwm. (All on golang)"),
+	)
+
 }

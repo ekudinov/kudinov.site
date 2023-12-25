@@ -51,7 +51,7 @@ func (c *created) Render() app.UI {
 		"display":         "flex",
 		"flex-direction":  "row",
 		"justify-content": "center",
-		"padding":         "20px",
+		"padding":         "10px",
 	}).Body(
 		app.Div().Body(
 			app.Span().Styles(map[string]string{
@@ -69,7 +69,7 @@ func (c *created) Render() app.UI {
 			"font-wiight": "bold",
 			"padding":     "5px 10px",
 		}).Body(
-			app.Text("c2022"),
+			app.Text("c2022-2023"),
 		),
 	)
 }
