@@ -5,11 +5,11 @@ import (
 	"net/http"
 
 	"github.com/ekudinov/kudinov.site/component"
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 )
 
 func main() {
-	app.Route("/", &component.MainPage{})
+	app.Route("/", func() app.Composer { return &component.MainPage{} })
 
 	app.RunWhenOnBrowser()
 

@@ -4,7 +4,7 @@ import (
 	"github.com/ekudinov/kudinov.site/component/content"
 	"github.com/ekudinov/kudinov.site/component/footer"
 	"github.com/ekudinov/kudinov.site/component/header"
-	"github.com/maxence-charriere/go-app/v9/pkg/app"
+	"github.com/maxence-charriere/go-app/v10/pkg/app"
 )
 
 type MainPage struct {
