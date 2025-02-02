@@ -182,7 +182,6 @@ func (f *hobby) Render() app.UI {
 			"font-weight": "bold",
 		}).Body(app.If(isRu,
 			app.Text(messages["hobby"][isRu])).Else(app.Text(messages["hobby"][isRu]))),
-		app.Div().Text("App framework for Ubuntu Touch && Tiling window manager like dwm. (All on golang)"),
+		app.Div().Text("Tools for self use db tui tool(golang), distributed ide with lsp(golang), designing a distributed operating system similar to Plan9."),
 	)
-
 }

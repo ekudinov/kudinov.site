@@ -69,7 +69,7 @@ func (c *created) Render() app.UI {
 			"font-wiight": "bold",
 			"padding":     "5px 10px",
 		}).Body(
-			app.Text("c2022-2023"),
+			app.Text("c2022-2025"),
 		),
 	)
 }
