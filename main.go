@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/ekudinov/kudinov.site/component"
 	"github.com/maxence-charriere/go-app/v10/pkg/app"
@@ -26,7 +27,14 @@ func main() {
 		Title: "Hello to all!",
 	})
 
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+
+	log.Printf("Listening on port %s", port)
+
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
 }
