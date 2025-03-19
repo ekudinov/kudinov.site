@@ -1,0 +1,25 @@
+services:
+  #  webserver:
+  #  image: nginx:latest
+  #  restart: always
+  #  ports:
+  #    - 8080:80
+  #    - 80:80
+  #    - 443:443
+  #  volumes:
+  #    - ./nginx/conf/:/etc/nginx/conf.d/:ro
+  #    - ./certbot/www:/var/www/certbot/:ro
+  #    - ./certbot/conf/:/etc/nginx/ssl/:ro
+  #certbot:
+  #  image: certbot/certbot:latest
+  #  volumes:
+  #    - ./certbot/www/:/var/www/certbot/:rw
+  #    - ./certbot/conf/:/etc/letsencrypt/:rw
+  goapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+      #   ports:
+      #- 8080:8000
+
